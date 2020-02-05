@@ -1,0 +1,167 @@
+Text File questions
+
+
+
+
+Problem 01: Sample Paragraphs
+
+
+
+- Which functions from utils.py will you use for interacting with the sample_paragraphs.txt file?
+
+The functions that I would use to interact with the sample_paragraphs.text file are lower, strip and split function as they are the functions that allowed for the strings of words from the text file to be read. I will also use the open file function to link the files correctly to each other!
+
+
+
+
+
+
+Problem 02: Words Per Minute
+
+
+
+- Given a long string that contains a full paragraph (e.g. "This is my name. It is Bob. Also, I have a cat named Troy."), what function will you use to separate a string containing a full paragraph into its individual words?
+
+
+
+
+
+
+I will use the split function to separate each paragraph into strings of words and then into individual words.
+	What is the calculation you will use in order to measure Words Per Minute speed? (You can describe your formula.)
+
+
+
+
+
+
+Number of words per string/ 5. start_time will be used to indicate the beginning of when the person started typing and end_time will used as the end. Then use the total time * (number of words per string/5) to calculate words per minute.
+	What is the calculation you will use in order to measure accuracy? (You can describe your formula.)
+
+To measure accuracy, I will use the reference_text and compare that to the typed_string inputted by the user. If the user, misspells a word in a string and continues on it, that will count as an inaccuracy. 
+
+
+
+
+
+Problem 03: Pig Latin
+
+
+
+- How will you identify that a word starts with a consonant cluster? 
+
+If a consonant cluster appears, I would use a loop to keep searching until all consonants are found and then terminate that. Aside from that, I will use all of the rules of Pig Latin to implement this function.
+
+
+
+
+
+
+Problem 04: Autocorrect Skeleton
+
+
+
+- How will you calculate the difference scores between the user input string and each valid word, and determine which difference is the smallest?
+
+To calculate the different scores between the user input and each valid word, I will use the function autocorrect with the inputs being user_input and words_list, in addition to a score_function which compares the two inputs as well. The score function, resulting in a number, will show the difference between the two inputs. I will substract the differences in characters between the user_input and the words_list and use the lowest one when necessary.
+
+
+
+
+
+
+Problem 05: Score Function 
+
+
+
+- What will your base case be?
+
+
+
+
+
+ if index[0] != index[0] then return 1 + swap_score(index[1:])  
+	Identify two example inputs which fall into different recursive calls. (rings, songs) or (supply, doubly) 
+	In each of these cases, what recursive call should be made? The recursive call should be made when there is more than 1 error in the spelling between the user_input and the words_list parameters. 
+
+
+
+
+
+
+
+Problem 06: 
+
+
+
+- What does each of the recursive calls in the skeleton represent? Each recursive calls in the skeleton represent how many errors there are need to be fixed and each recursive call counts how many errors are made.
+	Are there additional cases which don't fit into the three already given?
+
+
+
+
+
+ From the rules that we are given, I do not believe so but once I start coding that might change.
+	If we called score_function("bot", "boot"), list a series of successive recursive calls we would go through to reach the base case. For example, if we called score_function("add", "aadd"), one step could be score_function("add", "aadd") -> score_function("add", "add").
+
+
+
+
+
+ 
+Search the first character for a difference, see that there there is none and then return a recursive call for the next index and repeat until we reach the third index. At the third index, there is a difference so we check ahead on the next character to see if they are the same and if they are, we delete the current character. 
+	Based on your above list of recursive calls, classify each step as an add, remove, a swap, or something else.
+
+
+
+
+
+ Scan, scan, remove. 
+	Why would your function choose this sequence of recursive calls over another?
+
+This would be the most optimal way to implement the rules of the game based on the test cases.
+
+
+
+Problem 07: Accuracy
+
+
+
+- In your own words, why do we need to improve the accuracy of our existing score_function? Based on the fact that we are all virtually using the QWERTY keyboard, some words are more likely to be the correction than others.
+	In other words, what is the problem that we are trying to solve?
+
+
+
+
+
+ We are trying to solve the autocorrect errors that may have multiple possible autocorrected words but narrowing it down to only words in the proximity of the keys.
+	How can you adapt your score function from the previous problem to take into account key distances?
+ (Hint: which recursive call will need to be modified?)
+
+I will adapt my score function to take into key distances by modifying the recursive call to the second_score_function and adding key distances to that to make sure that they are taken account for when returning recursive calls.
+
+
+
+
+
+
+Problem 08: Efficiency
+
+
+
+- What data structure will you use to store all of the differences that score_function has already calculated?
+
+
+
+
+
+ The data structure that will be used is most likely be a list keeping tracking of all of the differences that have been made.
+	What types of values will this data structure contain?
+
+
+
+
+
+ The types of values that this data structure contains will be strings of misspelled characters.
+	Using the data structure you described, given a pair of words, how will you check whether score_function has already been called on that pair of words? I could use another function to check whether score_function has been called on that pair of words and delete it if it has already been called to avoid repeats.
+	If so, how will you access the already calculated difference? Record the value and set it to a specific index so that it has a saved value.
